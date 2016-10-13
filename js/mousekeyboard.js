@@ -54,7 +54,7 @@ function onClick( event ){
 	if( Math.abs(pressX - mouseX) > 3 || Math.abs(pressY - mouseY) > 3 )
 		return;				
 
-	var pickColorIndex = getPickColor();	
+	// var pickColorIndex = getPickColor();	
 	//	find it
 	// for( var i in countryColorMap ){
 	// 	var countryCode = i;
@@ -75,7 +75,7 @@ function onClick( event ){
 	// 		return;
 	// 	}
 	// }
-	selectVisualization( timeBins, 2009, [""]);	
+	// selectVisualization( timeBins, 2009, [""]);	
 		
 }
 

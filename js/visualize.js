@@ -301,7 +301,6 @@ function selectVisualization(linearData, year, countries) {
 	// var cName = countries[0].toUpperCase();
 
 	// $("#hudButtons .countryTextInput").val(cName);
-	countries = ["French Polynesia", "United Kingdom", "Maldives"];
 	previouslySelectedCountry = selectedCountry;
 	selectedCountry = countryData[countries[0].toUpperCase()];
 

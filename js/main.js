@@ -293,8 +293,8 @@ function initScene() {
 	rotating.add(visualizationMesh);	
 
 	buildGUI();
-
-	selectVisualization( timeBins, '2009', ['UNITED KINGDOM']);					
+	visualisePaths(["France", "French Polynesia", "Maldives"]);
+	// selectVisualization( timeBins, '2009', ['UNITED KINGDOM']);					
 
 		// test for highlighting specific countries
 	// highlightCountry( ["United States", "Switzerland", "China"] );
