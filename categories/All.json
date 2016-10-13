@@ -1,0 +1,39 @@
+{
+  "timeBins": [
+    {
+      "data": [
+        {
+          "i": "Indonesia",
+          "wc": "mil",
+          "e": "China",
+          "v": 122770
+        },
+        {
+          "i": "Gabon",
+          "wc": "mil",
+          "e": "France",
+          "v": 58487
+        },
+        {
+          "i": "Indonesia",
+          "wc": "mil",
+          "e": "Germany",
+          "v": 2134310
+        },
+        {
+          "i": "Indonesia",
+          "wc": "mil",
+          "e": "Hong Kong",
+          "v": 27938
+        },        
+        {
+          "i": "French Polynesia",
+          "wc": "mil",
+          "e": "United Kingdom",
+          "v": 12277
+        }
+      ],
+      "t": 2009
+    }
+  ]
+}
