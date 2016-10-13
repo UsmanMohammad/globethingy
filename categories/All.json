@@ -1,35 +1,23 @@
 {
   "timeBins": [
     {
-      "data": [
-        {
-          "i": "Indonesia",
-          "wc": "mil",
-          "e": "China",
-          "v": 122770
-        },
-        {
-          "i": "Gabon",
-          "wc": "mil",
-          "e": "France",
-          "v": 58487
-        },
-        {
-          "i": "Indonesia",
-          "wc": "mil",
-          "e": "Germany",
-          "v": 2134310
-        },
-        {
-          "i": "Indonesia",
-          "wc": "mil",
-          "e": "Hong Kong",
-          "v": 27938
-        },        
+      "data": [    
         {
           "i": "French Polynesia",
           "wc": "mil",
-          "e": "United Kingdom",
+          "e": "France",
+          "v": 12277
+        },
+        {
+          "i": "Maldives",
+          "wc": "mil",
+          "e": "French Polynesia",
+          "v": 12277
+        },
+        {
+          "i": "France",
+          "wc": "mil",
+          "e": "Maldives",
           "v": 12277
         }
       ],

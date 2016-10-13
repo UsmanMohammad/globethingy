@@ -134,8 +134,8 @@ function start( e ){
 
 
 var Selection = function(){
-	this.selectedYear = '2010';
-	this.selectedCountry = 'UNITED KINGDOM';
+	this.selectedYear = '2009';
+	this.selectedCountry = 'FRENCH POLYNESIA';
 	// this.showExports = true;
 	// this.showImports = true;
 	// this.importExportFilter = 'both';

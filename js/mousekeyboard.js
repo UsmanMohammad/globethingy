@@ -70,12 +70,12 @@ function onClick( event ){
 	// 		// console.log(countryName);
 	// 		var selection = selectionData;
 	// 		selection.selectedCountry = countryName;
-	// 		selectVisualization( timeBins, selection.selectedYear, [selection.selectedCountry], selection.getExportCategories(), selection.getImportCategories() );	
+	// 		selectVisualization( timeBins, 2009, [selection.selectedCountry]);	
 	// 		// console.log('selecting ' + countryName + ' from click');
 	// 		return;
 	// 	}
 	// }
-	selectVisualization( timeBins, selection.selectedYear, [selection.selectedCountry]);	
+	selectVisualization( timeBins, 2009, [""]);	
 		
 }
 
