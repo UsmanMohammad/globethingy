@@ -41,7 +41,7 @@ function buildDataVizGeometries( linearData ){
 	loadLayer.style.display = 'none';	
 }
 
-function getVisualizedMesh( linearData, year, countries, exportCategories, importCategories ){
+function getVisualizedMesh( linearData, year, countries){
 	//	for comparison purposes, all caps the country names
 	for( var i in countries ){
 		countries[i] = countries[i].toUpperCase();
@@ -80,8 +80,8 @@ function getVisualizedMesh( linearData, year, countries, exportCategories, impor
 		var useImporter = relevantImport;
 
 		var categoryName = reverseWeaponLookup[set.wc];
-		var relevantExportCategory = relevantExport && $.inArray(categoryName,exportCategories) >= 0;		
-		var relevantImportCategory = relevantImport && $.inArray(categoryName,importCategories) >= 0;		
+		var relevantExportCategory = relevantExport && $.inArray(categoryName,['Military Weapons','Civilian Weapons', 'Ammunition']) >= 0;		
+		var relevantImportCategory = relevantImport && $.inArray(categoryName,['Military Weapons','Civilian Weapons', 'Ammunition']) >= 0;		
 
 		if( (useImporter || useExporter) && (relevantExportCategory || relevantImportCategory) ){
 			//	we may not have line geometry... (?)
@@ -273,7 +273,7 @@ function getVisualizedMesh( linearData, year, countries, exportCategories, impor
 	return splineOutline;	
 }
 
-function selectVisualization( linearData, year, countries, exportCategories, importCategories ){
+function selectVisualization( linearData, year, countries){
 	//	we're only doing one country for now so...
 	// var cName = countries[0].toUpperCase();
 	
@@ -321,7 +321,7 @@ function selectVisualization( linearData, year, countries, exportCategories, imp
 
 	//	build the mesh
 	console.time('getVisualizedMesh');
-	var mesh = getVisualizedMesh( timeBins, year, countries, exportCategories, importCategories );				
+	var mesh = getVisualizedMesh( timeBins, year, countries);				
 	console.timeEnd('getVisualizedMesh');
 
 	//	add it to scene graph

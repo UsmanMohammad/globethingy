@@ -186,7 +186,7 @@ var d3Graphs = {
         }
         selectionData.selectedYear = year;
         selectionData.selectedCountry = country;
-        selectVisualization(timeBins, year,[country],exportArray, importArray);
+        selectVisualization(timeBins, year,[country]);
     },
     dropHandle:function() {
         d3Graphs.updateViz();

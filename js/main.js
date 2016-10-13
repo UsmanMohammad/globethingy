@@ -294,7 +294,7 @@ function initScene() {
 
 	buildGUI();
 
-	selectVisualization( timeBins, '2010', ['UNITED KINGDOM'], ['Military Weapons','Civilian Weapons', 'Ammunition'], ['Military Weapons','Civilian Weapons', 'Ammunition'] );					
+	selectVisualization( timeBins, '2009', ['UNITED KINGDOM']);					
 
 		// test for highlighting specific countries
 	// highlightCountry( ["United States", "Switzerland", "China"] );
