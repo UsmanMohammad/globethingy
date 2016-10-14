@@ -75,7 +75,7 @@ function attachMarkerToCountry( countryName, importance ){
 			s *= 0.75;
 
 		if( this.selected )
-			s = 30;
+			s = 15;
 
 		if( this.hover )
 			s = 15;
@@ -97,7 +97,7 @@ function attachMarkerToCountry( countryName, importance ){
 	var nameLayer = marker.querySelector( '#countryText' );		
 
 	//	right now, something arbitrary like 10 mil dollars or more to be highlighted
-	var tiny = (importance < 20000000) && (!marker.selected);	
+	var tiny =  (!marker.selected); // && (importance < 20000000) ;	
 	marker.tiny = tiny;
 
 	// if( tiny )
@@ -117,10 +117,10 @@ function attachMarkerToCountry( countryName, importance ){
 		this.hover = true;
 	}
 
-	// var markerOut = function(e){
-	// 	this.detailLayer.innerHTML = "";
-	// 	this.hover = false;
-	// }
+	var markerOut = function(e){
+		this.detailLayer.innerHTML = "";
+		this.hover = false;
+	}
 
 	if( !tiny ) {		
 	}

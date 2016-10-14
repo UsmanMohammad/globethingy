@@ -6,19 +6,19 @@
           "arrival": "LGW",
           "wc": "mil",
           "departure": "JFK",
-          "v": 12277
+          "v": 12
         },
         {
           "arrival": "MLE",
           "wc": "mil",
           "departure": "LGW",
-          "v": 12277
+          "v": 12
         },
         {
           "arrival": "LHE",
           "wc": "mil",
           "departure": "MLE",
-          "v": 12277
+          "v": 12
         }
       ]
     }
