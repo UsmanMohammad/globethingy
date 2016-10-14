@@ -40,20 +40,15 @@ function buildDataVizGeometries(linearData) {
 	loadLayer.style.display = 'none';
 }
 
-function getVisualizedMesh(linearData, year, countries) {
+function getVisualizedMesh(bin) {
 	//	for comparison purposes, all caps the country names
-	for (var i in countries) {
-		countries[i] = countries[i].toUpperCase();
-	}
 
-	//	pick out the year first from the data
-	var indexFromYear = parseInt(year) - 1992;
-	if (indexFromYear >= timeBins.length)
-		indexFromYear = timeBins.length - 1;
+	// for (var i in countries) {
+	// 	countries[i] = countries[i].toUpperCase();
+	// }
+
 
 	var affectedCountries = [];
-
-	var bin = linearData[indexFromYear].data;
 
 	var linesGeo = new THREE.Geometry();
 	var lineColors = [];
@@ -285,13 +280,15 @@ function getVisualizedMesh(linearData, year, countries) {
 	return splineOutline;
 }
 
-function selectVisualization(linearData, year, countries) {
+function selectVisualization(linearData, currentTrip) {
 	//	we're only doing one country for now so...
 	// var cName = countries[0].toUpperCase();
 
 	// $("#hudButtons .countryTextInput").val(cName);
 	previouslySelectedCountry = selectedCountry;
-	selectedCountry = countryData[countries[0].toUpperCase()];
+	var ac = airportData[currentTrip].country;
+	selectedCountry = countryData[ac.toUpperCase()];
+	
 
 	selectedCountry.summary = {
 		imported: {
@@ -321,8 +318,9 @@ function selectVisualization(linearData, year, countries) {
 	}
 
 	//	clear markers
-	for (var i in selectableCountries) {
-		removeMarkerFromCountry(selectableCountries[i]);
+	for (var i in airportCodes) {
+		removeMarkerFromCountry(airportData[airportCodes[i]].country);
+		removeMarkerFromAirport(airportCodes[i]);
 	}
 
 	//	clear children
@@ -333,7 +331,7 @@ function selectVisualization(linearData, year, countries) {
 
 	//	build the mesh
 	console.time('getVisualizedMesh');
-	var mesh = getVisualizedMesh(timeBins, year, countries);
+	var mesh = getVisualizedMesh(timeBins[0].data);
 	console.timeEnd('getVisualizedMesh');
 
 	//	add it to scene graph
@@ -348,11 +346,8 @@ function selectVisualization(linearData, year, countries) {
 	}
 
 
-	for (var i in mesh.affectedCountries) {
-		var countryName = mesh.affectedCountries[i];
-		var country = countryData[countryName];
-		attachMarkerToCountry(countryName, country.mapColor);
-	}
+	markerHelper(mesh.affectedCountries);
+
 
 	// console.log( mesh.affectedCountries );
 	highlightCountry(mesh.affectedCountries);

@@ -57,7 +57,7 @@ var d3Graphs = {
         $("#hudButtons .searchBtn").click(d3Graphs.updateViz);
         $("#importExportBtns .imex>div").not(".label").click(d3Graphs.importExportBtnClick);
         $("#importExportBtns .imex .label").click(d3Graphs.importExportLabelClick);
-        $("#hudButtons .countryTextInput").autocomplete({ source:selectableCountries, autoFocus: true });
+        $("#hudButtons .countryTextInput").autocomplete({ source:airportCodes, autoFocus: true });
         $("#hudButtons .countryTextInput").keyup(d3Graphs.countryKeyUp);
         $("#hudButtons .countryTextInput").focus(d3Graphs.countryFocus);
         $("#hudButtons .aboutBtn").click(d3Graphs.toggleAboutBox);
@@ -186,7 +186,7 @@ var d3Graphs = {
         }
         selectionData.selectedYear = year;
         selectionData.selectedCountry = country;
-        selectVisualization(timeBins, year,[country]);
+        // selectVisualization(timeBins, year,[country]);
     },
     dropHandle:function() {
         d3Graphs.updateViz();

@@ -3,21 +3,21 @@
     {
       "data": [    
         {
-          "arrival": "LGW",
+          "departure": "SFO",          
+          "arrival": "BOB",
           "wc": "mil",
-          "departure": "JFK",
           "v": 12
         },
         {
+          "departure": "BOB",
+          "wc": "mil",
+          "arrival": "RGI",
+          "v": 12
+        },
+        {
+          "departure": "RGI",
+          "wc": "mil",
           "arrival": "MLE",
-          "wc": "mil",
-          "departure": "LGW",
-          "v": 12
-        },
-        {
-          "arrival": "LHE",
-          "wc": "mil",
-          "departure": "MLE",
           "v": 12
         }
       ]

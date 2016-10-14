@@ -55,7 +55,7 @@ var d3Graphs = {
         $("#hudHeader .searchBtn").click(d3Graphs.updateViz);
         $("#importExportBtns .imex>div").not(".label").click(d3Graphs.importExportBtnClick);
         $("#importExportBtns .imex .label").click(d3Graphs.importExportLabelClick);
-        $("#hudHeader .countryTextInput").autocomplete({ source:selectableCountries });
+        $("#hudHeader .countryTextInput").autocomplete({ source:airportCodes });
         $("#hudHeader .countryTextInput").keyup(d3Graphs.countryKeyUp);
         $("#hudHeader .countryTextInput").focus(d3Graphs.countryFocus);
         $(document).on("click",".ui-autocomplete li",d3Graphs.menuItemClick);
@@ -139,7 +139,7 @@ var d3Graphs = {
                 importArray.push(reverseWeaponLookup[weaponTypeKey]);
             }
         }
-        selectVisualization(timeBins, year,[country],exportArray, importArray);
+        selectVisualization(timeBins[0]);
     },
     dropHandle:function() {
         d3Graphs.updateViz();

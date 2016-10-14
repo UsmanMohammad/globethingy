@@ -42,7 +42,7 @@ var airportData = new Object();
 var countryLookup;
 
 var selectableYears = [];
-var selectableCountries = [];
+var airportCodes = [];
 
 /*
 	930100 – military weapons, and includes some light weapons and artillery as well as machine guns and assault rifles etc.  
@@ -286,15 +286,15 @@ function initScene() {
 
 			//	let's track a list of actual countries listed in this data set
 			//	this is actually really slow... consider re-doing this with a map
-			if ($.inArray(departureName, selectableCountries) < 0)
-				selectableCountries.push(departureName);
+			if ($.inArray(departureName, airportCodes) < 0)
+				airportCodes.push(departureName);
 
-			if ($.inArray(arrivalName, selectableCountries) < 0)
-				selectableCountries.push(arrivalName);
+			if ($.inArray(arrivalName, airportCodes) < 0)
+				airportCodes.push(arrivalName);
 		}
 	}
 
-	console.log(selectableCountries);
+	console.log(airportCodes);
 
 	// load geo data (country lat lons in this case)
 	console.time('loadGeoData');
@@ -730,7 +730,7 @@ function highlightCountry(countries) {
 		// var fillCSS = '#ff0000';
 		var fillCSS = '#333333';
 		if (countryCode === selectedCountryCode)
-			fillCSS = '#eeeeee'
+			fillCSS = '#aaaaaa'
 			// if( mapColor !== undefined ){
 			// 	var k = map( mapColor, 0, 200000000, 0, 255 );
 			// 	k = Math.floor( constrain( k, 0, 255 ) );
