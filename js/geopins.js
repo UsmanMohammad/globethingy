@@ -70,7 +70,17 @@ function loadAirportGeoData( airportlatlonData ){
         center.x = Math.sin(phi) * Math.cos(theta) * rad;
         center.y = Math.cos(phi) * rad;
         center.z = Math.sin(phi) * Math.sin(theta) * rad;  	
-	
+		
+		// var lon = airport.lon - 99;
+        // var lat = airport.lat + 1  ;
+		// var phi   = (90-lat)*(Math.PI/180);
+		// var theta = (lon+180)*(Math.PI/180);
+		
+		// var center = new THREE.Vector3();                
+		// center.x = -((rad) * Math.sin(phi)*Math.cos(theta));
+		// center.z = ((rad) * Math.sin(phi)*Math.sin(theta));
+		// center.y = ((rad) * Math.cos(phi));
+
 		//	save and catalogue       
 		airport.center = center;
 		airportData[airport.airportCode] = airport;	
