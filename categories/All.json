@@ -3,15 +3,15 @@
     {
       "data": [    
         {
-          "arrival": "BOB",
+          "arrival": "LGW",
           "wc": "mil",
-          "departure": "LHR",
+          "departure": "JFK",
           "v": 12277
         },
         {
           "arrival": "MLE",
           "wc": "mil",
-          "departure": "BOB",
+          "departure": "LGW",
           "v": 12277
         },
         {

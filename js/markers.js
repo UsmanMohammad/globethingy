@@ -104,7 +104,8 @@ function attachMarkerToCountry( countryName, importance ){
 	// 	nameLayer.innerHTML = country.countryCode;	
 	// else
 		nameLayer.innerHTML = countryName.replace(' ','&nbsp;');	
-
+	var detailLayer = marker.querySelector( '#detailText' );
+	detailLayer.innerHTML = "2Pac is still alive";
 	// marker.nameLayer = nameLayer;
 	// marker.nameLayerText = countryName;
 	// marker.nameLayerShorten = country.countryCode;;	
@@ -116,10 +117,10 @@ function attachMarkerToCountry( countryName, importance ){
 		this.hover = true;
 	}
 
-	var markerOut = function(e){
-		this.detailLayer.innerHTML = "";
-		this.hover = false;
-	}
+	// var markerOut = function(e){
+	// 	this.detailLayer.innerHTML = "";
+	// 	this.hover = false;
+	// }
 
 	if( !tiny ) {		
 	}
