@@ -3,25 +3,24 @@
     {
       "data": [    
         {
-          "i": "French Polynesia",
+          "arrival": "BOB",
           "wc": "mil",
-          "e": "France",
+          "departure": "LHR",
           "v": 12277
         },
         {
-          "i": "Maldives",
+          "arrival": "MLE",
           "wc": "mil",
-          "e": "French Polynesia",
+          "departure": "BOB",
           "v": 12277
         },
         {
-          "i": "France",
+          "arrival": "LHE",
           "wc": "mil",
-          "e": "Maldives",
+          "departure": "MLE",
           "v": 12277
         }
-      ],
-      "t": 2009
+      ]
     }
   ]
 }

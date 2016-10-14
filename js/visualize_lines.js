@@ -1,23 +1,23 @@
 var globeRadius = 1000;
 var vec3_origin = new THREE.Vector3(0,0,0);
 
-function makeConnectionLineGeometry( origin, destination, value, type ){
-	if( origin.countryName == undefined || destination.countryName == undefined )
+function makeConnectionLineGeometry( departure, arrival, value, type ){
+	if( departure.country == undefined || arrival.country == undefined )
 		return undefined;
 
 	// console.log("making connection between " + origin.countryName + " and " + destination.countryName + " with code " + type );
-	console.log(origin);
-	console.log(destination);
-	var distanceBetweenCountryCenter = origin.center.clone().subSelf(destination.center).length();		
+	console.log(departure);
+	console.log(arrival);
+	var distanceBetweenCountryCenter = departure.center.clone().subSelf(arrival.center).length();		
 
 	//	how high we want to shoot the curve upwards
 	var anchorHeight = globeRadius + distanceBetweenCountryCenter * 0.7;
 
 	//	start of the line
-	var start = origin.center;
+	var start = departure.center;
 
 	//	end of the line
-	var end = destination.center;
+	var end = arrival.center;
 	
 	//	midpoint for the curve
 	var mid = start.clone().lerpSelf(end,0.5);		
