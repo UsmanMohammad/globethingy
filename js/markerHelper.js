@@ -1,7 +1,7 @@
 function markerHelper(affectedCountries) {
     for (var i in airportCodes) {
         var country = airportData[airportCodes[i]].country.toUpperCase();
-        var isSelected = (selectedCountry.countryName == country)
+        var isSelected = (selectedAirport.airportCode == airportCodes[i])
         if (isSelected)
             attachMarkerToAirport(airportData[airportCodes[i]], country, 12, isSelected);
         

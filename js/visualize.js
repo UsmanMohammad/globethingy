@@ -40,7 +40,7 @@ function buildDataVizGeometries(linearData) {
 	loadLayer.style.display = 'none';
 }
 
-function getVisualizedMesh(bin) {
+function getVisualizedMesh(bin, currentTrip) {
 	//	for comparison purposes, all caps the country names
 
 	// for (var i in countries) {
@@ -74,7 +74,11 @@ function getVisualizedMesh(bin) {
 
 		var thisLineIsExport = false;
 
-		if (departureName == selectedCountry.countryName) {
+		// if (departureName == selectedCountry.countryName) {
+		// 	thisLineIsExport = true;
+		// }
+
+		if (set.departure == currentTrip) {
 			thisLineIsExport = true;
 		}
 
@@ -286,8 +290,9 @@ function selectVisualization(linearData, currentTrip) {
 
 	// $("#hudButtons .countryTextInput").val(cName);
 	previouslySelectedCountry = selectedCountry;
-	var ac = airportData[currentTrip].country;
-	selectedCountry = countryData[ac.toUpperCase()];
+	previouslySelectedAirport = selectedAirport;
+	selectedAirport = airportData[currentTrip];
+	selectedCountry = countryData[selectedAirport.country.toUpperCase()];
 	
 
 	selectedCountry.summary = {
@@ -331,7 +336,7 @@ function selectVisualization(linearData, currentTrip) {
 
 	//	build the mesh
 	console.time('getVisualizedMesh');
-	var mesh = getVisualizedMesh(timeBins[0].data);
+	var mesh = getVisualizedMesh(timeBins[0].data, currentTrip );
 	console.timeEnd('getVisualizedMesh');
 
 	//	add it to scene graph
