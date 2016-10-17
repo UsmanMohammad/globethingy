@@ -1,9 +1,12 @@
-function markerHelper(affectedCountries) {
+function markerHelper(affectedCountries, currentTrip, journeyIndex) {
     for (var i in airportCodes) {
         var country = airportData[airportCodes[i]].country.toUpperCase();
         var isSelected = (selectedAirport.airportCode == airportCodes[i])
         if (isSelected)
-            attachMarkerToAirport(airportData[airportCodes[i]], country, 12, isSelected);
+        {
+            attachMarkerToAirport(airportData[airportCodes[i]], currentTrip, journeyIndex , isSelected);
+            break;            
+        }
         
     }
     // for (var i in mesh.affectedCountries) {

@@ -86,6 +86,7 @@ var selectedCountry = null;
 var previouslySelectedCountry = null;
 var selectedAirport = null;
 var previouslySelectedAirport = null;
+var activeJourney = null;
 
 //	contains info about what year, what countries, categories, etc that's being visualized
 var selectionData;

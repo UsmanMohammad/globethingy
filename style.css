@@ -109,13 +109,23 @@ li { list-style-type:none; }
 	cursor:					pointer;
 }	
 
-.country {
+.marker_section {
 	margin-right:			10px;
+    font-size:              22pt;
 }
 
+.marker_headers{
+    font-size:              16pt;
+    color:                  #2980b9;
+}
+.marker_footer{
+	color:					#aaaaaa;    
+    font-size:              12pt;
+}
 
 .detail {
 	color:					#aaaaaa;
+    font-size:              9pt;
 }
 
 #loading{

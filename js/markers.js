@@ -143,7 +143,7 @@ function attachMarkerToCountry( countryName, importance, isSelected ){
 }		
 
 
-function attachMarkerToAirport( airport, importance, isSelected ){
+function attachMarkerToAirport( airport, currentTrip, journeyIndex, isSelected ){
 	//	look up the name to mesh
 
 	var container = document.getElementById( 'visualization' );	
@@ -155,7 +155,7 @@ function attachMarkerToAirport( airport, importance, isSelected ){
 
 	marker.countryName = airport.country;
 
-	marker.importance = importance;
+	marker.importance = 12;
 	marker.selected = isSelected;
 	marker.hover = false;
 
@@ -172,21 +172,46 @@ function attachMarkerToAirport( airport, importance, isSelected ){
 			this.style.display = 'inline';
 		}
 	}
-    var countryLayer = marker.querySelector( '#countryText');
+    var countryLayer = marker.querySelector( '#cityText');
     marker.countryLayer = countryLayer;
-	var detailLayer = marker.querySelector( '#detailText' );
+	var detailLayer = marker.querySelector( '#countryText' );
 	marker.detailLayer = detailLayer;
-    marker.jquery = $(marker);
+
+	var flightDetailsLayer = marker.querySelector('#flightDetails');
+	marker.flightDetailsLayer = flightDetailsLayer;
+
+	var nextFlightLayer = marker.querySelector('#nextFlight')
+	marker.nextFlightLayer = nextFlightLayer;
+
+	var hotelNameLayer = marker.querySelector('#hotelNameText');
+	marker.hotelNameLayer = hotelNameLayer;
+
+	var hotelDescriptorLayer = marker.querySelector('#hotelDescriptor');
+	marker.hotelDescriptorLayer = hotelDescriptorLayer;
+
+	var hotelImageLayer = marker.querySelector('#hotelImage');
+	marker.hotelImageLayer = hotelImageLayer;
+
+	var nightStayLayer = marker.querySelector('#nightStayText');
+    marker.nightStayLayer = nightStayLayer;
+
+	var itinerarySectionLayer = marker.querySelector('#itinerarySection');
+	marker.itinerarySectionLayer = itinerarySectionLayer;
+
+	marker.jquery = $(marker);
 	marker.setSize = function( s ){
-	    var detailSize = Math.floor(2 + s * 0.5);	
-		this.detailLayer.style.fontSize = detailSize + 'pt';
-        var totalHeight = detailSize * 2;
-		this.style.fontSize = totalHeight * 1.125 + 'pt';
-		if(detailSize <= 8) {
-            this.countryLayer.style.marginTop = "0px";  
-		} else {
+	    // var detailSize = Math.floor(2 + s * 0.5);	
+		// this.detailLayer.style.fontSize = detailSize + 'pt';
+        // var totalHeight = detailSize * 2;
+		// this.style.fontSize = totalHeight * 1.125 + 'pt';
+		// if(detailSize <= 8) {
+        //     this.countryLayer.style.marginTop = "0px";  
+		// } else {
+		//     this.countryLayer.style.marginTop = "-1px";
+		// }
 		    this.countryLayer.style.marginTop = "-1px";
-		}
+		
+		
 	}
 
 	marker.update = function(){
@@ -226,7 +251,7 @@ function attachMarkerToAirport( airport, importance, isSelected ){
 		this.setPosition( screenPos.x, screenPos.y, zIndex );	
 	}
 
-	var nameLayer = marker.querySelector( '#countryText' );		
+	var nameLayer = marker.querySelector( '#cityText' );		
 
 	//	right now, something arbitrary like 10 mil dollars or more to be highlighted
 	// var tiny =  (!marker.selected); // && (importance < 20000000) ;	
@@ -236,8 +261,28 @@ function attachMarkerToAirport( airport, importance, isSelected ){
 	// 	nameLayer.innerHTML = country.countryCode;	
 	// else
 		nameLayer.innerHTML = airport.city.replace(' ','&nbsp;');	
-	var detailLayer = marker.querySelector( '#detailText' );
+	var detailLayer = marker.querySelector( '#countryText' );
 	detailLayer.innerHTML = airport.country.toUpperCase();
+	marker.itinerarySectionLayer.innerHTML = "Your Itinerary";
+
+	if (journeyIndex <= timeBins[0].data.length)
+	{
+		if (journeyIndex < timeBins[0].data.length)
+		{
+			marker.nextFlightLayer.innerHTML = "Next Flight";
+			marker.flightDetailsLayer.innerHTML = currentTrip + " ✈️ " + timeBins[0].data[journeyIndex].arrival;
+		}
+
+		if (journeyIndex != 0)		{
+			var hotel = timeBins[0].data[journeyIndex - 1].hotels[0];
+			marker.hotelNameLayer.innerHTML = hotel.name;
+			marker.hotelDescriptorLayer.innerHTML = "Hotel"
+			marker.hotelImageLayer.src = hotel.imageUrl;
+			marker.nightStayLayer.innerHTML = hotel.nightStay + ((hotel.nightStay > 1) ? " Nights Stay" : " Night Stay");
+		}
+	}
+
+	
 	// marker.nameLayer = nameLayer;
 	// marker.nameLayerText = countryName;
 	// marker.nameLayerShorten = country.countryCode;;	

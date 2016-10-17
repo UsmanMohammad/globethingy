@@ -284,7 +284,7 @@ function getVisualizedMesh(bin, currentTrip) {
 	return splineOutline;
 }
 
-function selectVisualization(linearData, currentTrip) {
+function selectVisualization(linearData, currentTrip, journeyIndex) {
 	//	we're only doing one country for now so...
 	// var cName = countries[0].toUpperCase();
 
@@ -351,7 +351,7 @@ function selectVisualization(linearData, currentTrip) {
 	}
 
 
-	markerHelper(mesh.affectedCountries);
+	markerHelper(mesh.affectedCountries, currentTrip, journeyIndex );
 
 
 	// console.log( mesh.affectedCountries );

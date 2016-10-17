@@ -17,16 +17,18 @@ function countryCycle() {
     if (countries[countries.length -1] == countries[0]){
         countries.pop();
     }
-    visualisePaths(countries, airportCodes)
+    visualisePaths(countries, airportCodes, 0)
 }
 
-function visualisePaths(countries, trip) {
+function visualisePaths(countries, trip, journeyIndex) {
     
-    selectVisualization(timeBins[0].data, trip[0]);
+    if (journeyIndex > timeBins[0].data.length)
+        journeyIndex = 0;
+    selectVisualization(timeBins[0].data, trip[0], journeyIndex);
     countries = nextItem(countries)
     trip = nextItem(trip);
     setTimeout(function () {
-        visualisePaths(countries, trip);
+        visualisePaths(countries, trip, journeyIndex + 1);
     }, 5000)
 }
 
