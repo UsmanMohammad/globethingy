@@ -93,6 +93,7 @@ li { list-style-type:none; }
 
 .marker {
 	position:				absolute;
+
 	display:				inline-block;
 	background-color: 		rgba(0,0,0,.87);	
 	color:					#ffffff;

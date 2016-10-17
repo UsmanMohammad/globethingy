@@ -161,7 +161,7 @@ function attachMarkerToAirport( airport, importance, isSelected ){
 
 	marker.setPosition = function(x,y,z){
 		this.style.left = x + 15 + 'px';
-		this.style.top = y + 'px';	
+		this.style.top = y - 200 + 'px';	
 		this.style.zIndex = z;
 	}
 
