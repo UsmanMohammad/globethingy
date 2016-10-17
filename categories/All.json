@@ -1,45 +1,45 @@
 {
   "timeBins": [
     {
-      "data": [    
+      "data": [
         {
-          "departure": "LGW",          
+          "departure": "LGW",
           "arrival": "BOB",
           "wc": "mil",
           "v": 12,
-          "hotels" : [
+          "hotels": [
             {
-              "name" : "Shamalama Ding Dong",
-              "imageUrl" : "http://images.luxtripper.co.uk/hotels/GALLERY/Samaya%20Seminyak%20Bali/Landing%20Page%20Banner/Main-Pool-Decking.jpg",
-              "nightStay" : 4
+              "name": "Shamalama Ding Dong",
+              "imageUrl": "http://images.luxtripper.co.uk/hotels/GALLERY/Samaya%20Seminyak%20Bali/Landing%20Page%20Banner/Main-Pool-Decking.jpg",
+              "nightStay": 4
             }
-          ] 
+          ]
         },
         {
           "departure": "BOB",
           "wc": "mil",
-          "arrival": "RGI",
-          "v": 12,
-          "hotels" : [
-            {
-              "name" : "Shamalama Ding Dong",
-              "imageUrl" : "http://images.luxtripper.co.uk/hotels/GALLERY/Samaya%20Seminyak%20Bali/Landing%20Page%20Banner/Main-Pool-Decking.jpg",
-              "nightStay" : 2              
-            }
-          ] 
-        },
-        {
-          "departure": "RGI",
-          "wc": "mil",
           "arrival": "MLE",
           "v": 12,
-          "hotels" : [
+          "hotels": [
             {
-              "name" : "Shamalama Ding Dong",
-              "imageUrl" : "http://images.luxtripper.co.uk/hotels/GALLERY/Samaya%20Seminyak%20Bali/Landing%20Page%20Banner/Main-Pool-Decking.jpg",
-              "nightStay" : 4              
+              "name": "Shamalama Ding Dong",
+              "imageUrl": "http://images.luxtripper.co.uk/hotels/GALLERY/Samaya%20Seminyak%20Bali/Landing%20Page%20Banner/Main-Pool-Decking.jpg",
+              "nightStay": 2
             }
-          ] 
+          ]
+        },
+        {
+          "departure": "MLE",
+          "wc": "mil",
+          "arrival": "SFO",
+          "v": 12,
+          "hotels": [
+            {
+              "name": "Shamalama Ding Dong",
+              "imageUrl": "http://images.luxtripper.co.uk/hotels/GALLERY/Samaya%20Seminyak%20Bali/Landing%20Page%20Banner/Main-Pool-Decking.jpg",
+              "nightStay": 2
+            }
+          ]
         }
       ]
     }

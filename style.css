@@ -93,7 +93,8 @@ li { list-style-type:none; }
 
 .marker {
 	position:				absolute;
-
+    word-wrap:              break-word;
+    width:                 250px;
 	display:				inline-block;
 	background-color: 		rgba(0,0,0,.87);	
 	color:					#ffffff;
