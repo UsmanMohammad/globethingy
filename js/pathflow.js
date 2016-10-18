@@ -1,8 +1,8 @@
 function countryCycle() {
     var countries = [];
     var first = true;
-    for (var i in timeBins[0].data) {
-        var c = timeBins[0].data[i];
+    for (var i in flights) {
+        var c = flights[i];
         if (first) {
             countries.push(airportData[c.departure.toUpperCase()].country.toUpperCase());
             first = false;
@@ -22,9 +22,9 @@ function countryCycle() {
 
 function visualisePaths(countries, trip, journeyIndex) {
     
-    if (journeyIndex > timeBins[0].data.length)
+    if (journeyIndex > flights.length)
         journeyIndex = 0;
-    selectVisualization(timeBins[0].data, trip[0], journeyIndex);
+    selectVisualization(flights, trip[0], journeyIndex);
     countries = nextItem(countries)
     trip = nextItem(trip);
     setTimeout(function () {

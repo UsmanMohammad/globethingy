@@ -53,7 +53,7 @@ function loadContentData(callback){
 	xhr.open( 'GET', filePath, true );
 	xhr.onreadystatechange = function() {
 		if ( xhr.readyState === 4 && xhr.status === 200 ) {
-	    	timeBins = JSON.parse( xhr.responseText ).timeBins;
+	    	flights = JSON.parse( xhr.responseText ).flights;
 		
 			maxValue = 0;
 			// console.log(timeBins);

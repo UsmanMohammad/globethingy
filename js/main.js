@@ -27,7 +27,7 @@ var mapUniforms;
 //	contains the data loaded from the arms data file
 //	contains a list of years, followed by trades within that year
 //	properties for each "trade" is: e - exporter, i - importer, v - value (USD), wc - weapons code (see table)
-var timeBins;
+var flights;
 
 //	contains latlon data for each airport
 var latlonData;
@@ -136,6 +136,8 @@ function start(e) {
 		};
 	};
 }
+
+window.startVisualisation = start;
 
 
 
@@ -277,24 +279,22 @@ function initScene() {
 	rotating.add(sphere);
 
 
-	for (var i in timeBins) {
-		var bin = timeBins[i].data;
-		for (var s in bin) {
-			var set = bin[s];
-			// if( set.v < 1000000 )
-			// 	continue;
+	for (var i in flights) {
 
-			var departureName = set.departure.toUpperCase();
-			var arrivalName = set.arrival.toUpperCase();
+		var set = flights[i];
+		// if( set.v < 1000000 )
+		// 	continue;
 
-			//	let's track a list of actual countries listed in this data set
-			//	this is actually really slow... consider re-doing this with a map
-			if ($.inArray(departureName, airportCodes) < 0)
-				airportCodes.push(departureName);
+		var departureName = set.departure.toUpperCase();
+		var arrivalName = set.arrival.toUpperCase();
 
-			if ($.inArray(arrivalName, airportCodes) < 0)
-				airportCodes.push(arrivalName);
-		}
+		//	let's track a list of actual countries listed in this data set
+		//	this is actually really slow... consider re-doing this with a map
+		if ($.inArray(departureName, airportCodes) < 0)
+			airportCodes.push(departureName);
+
+		if ($.inArray(arrivalName, airportCodes) < 0)
+			airportCodes.push(arrivalName);
 	}
 
 	console.log(airportCodes);
@@ -306,7 +306,7 @@ function initScene() {
 	console.timeEnd('loadGeoData');
 
 	console.time('buildDataVizGeometries');
-	var vizilines = buildDataVizGeometries(timeBins);
+	var vizilines = buildDataVizGeometries(flights);
 	console.timeEnd('buildDataVizGeometries');
 
 	visualizationMesh = new THREE.Object3D();
@@ -754,35 +754,27 @@ function getHistoricalData(country) {
 	var exportCategories = selectionData.getExportCategories();
 	var importCategories = selectionData.getImportCategories();
 
-	for (var i in timeBins) {
-		var yearBin = timeBins[i].data;
-		var value = {
-			imports: 0,
-			exports: 0
-		};
-		for (var s in yearBin) {
-			var set = yearBin[s];
-			var categoryName = reverseWeaponLookup[set.wc];
+	var value = {
+		imports: 0,
+		exports: 0
+	};
+	for (var s in flights) {
+		var set = flights[s];
 
-			var departureCountryName = set.departure.toUpperCase();
-			var arrivalCountryName = set.arrival.toUpperCase();
-			var relevantCategory = (countryName == departureCountryName && $.inArray(categoryName, exportCategories) >= 0) ||
-				(countryName == arrivalCountryName && $.inArray(categoryName, importCategories) >= 0);
+		var departureCountryName = set.departure.toUpperCase();
+		var arrivalCountryName = set.arrival.toUpperCase();
 
-			if (relevantCategory == false)
-				continue;
+		//	ignore all unidentified country data
+		if (countryData[departureCountryName] === undefined || countryData[arrivalCountryName] === undefined)
+			continue;
 
-			//	ignore all unidentified country data
-			if (countryData[departureCountryName] === undefined || countryData[arrivalCountryName] === undefined)
-				continue;
-
-			if (departureCountryName == countryName)
-				value.exports += set.v;
-			if (arrivalCountryName == countryName)
-				value.imports += set.v;
-		}
-		history.push(value);
+		if (departureCountryName == countryName)
+			value.exports += 12;
+		if (arrivalCountryName == countryName)
+			value.imports += 12;
 	}
+	history.push(value);
+
 	// console.log(history);
 	return history;
 }

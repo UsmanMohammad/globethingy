@@ -263,10 +263,10 @@ function attachMarkerToAirport(airport, currentTrip, journeyIndex, isSelected) {
 	detailLayer.innerHTML = airport.country.toUpperCase();
 	marker.itinerarySectionLayer.innerHTML = "Your Itinerary";
 
-	if (journeyIndex <= timeBins[0].data.length) {
-		if (journeyIndex < timeBins[0].data.length) {
+	if (journeyIndex <= flights.length) {
+		if (journeyIndex < flights.length) {
 			marker.nextFlightLayer.innerHTML = "Next Flight";
-			marker.flightDetailsLayer.innerHTML = currentTrip + " ✈️ " + timeBins[0].data[journeyIndex].arrival;
+			marker.flightDetailsLayer.innerHTML = currentTrip + " ✈️ " + flights[journeyIndex].arrival;
 		}
 		else{
 			marker.nextFlightLayer.innerHTML = "End of trip";
@@ -274,8 +274,8 @@ function attachMarkerToAirport(airport, currentTrip, journeyIndex, isSelected) {
 		}
 
 		if (journeyIndex != 0) {
-			if (timeBins[0].data[journeyIndex - 1].hotels != null && timeBins[0].data[journeyIndex - 1].hotels.length > 0 ) {
-				var hotel = timeBins[0].data[journeyIndex - 1].hotels[0];
+			if (flights[journeyIndex - 1].hotels != null && flights[journeyIndex - 1].hotels.length > 0 ) {
+				var hotel = flights[journeyIndex - 1].hotels[0];
 				marker.hotelNameLayer.innerHTML = hotel.name;
 				marker.hotelDescriptorLayer.innerHTML = "Hotel"
 				marker.hotelImageLayer.src = hotel.imageUrl;

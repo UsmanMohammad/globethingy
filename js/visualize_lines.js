@@ -1,7 +1,7 @@
 var globeRadius = 1000;
 var vec3_origin = new THREE.Vector3(0,0,0);
 
-function makeConnectionLineGeometry( departure, arrival, value, type ){
+function makeConnectionLineGeometry( departure, arrival, value){
 	if( departure.country == undefined || arrival.country == undefined )
 		return undefined;
 
@@ -70,7 +70,7 @@ function makeConnectionLineGeometry( departure, arrival, value, type ){
 	//	we need this for drawing multiple arcs, but piled into one geometry buffer
 	points.push( vec3_origin );
 
-	var val = value * 0.0003;
+	var val = 15000 * 0.0003;
 	
 	var size = (10 + Math.sqrt(val));
 	size = constrain(size,0.1, 60);

@@ -139,7 +139,7 @@ var d3Graphs = {
                 importArray.push(reverseWeaponLookup[weaponTypeKey]);
             }
         }
-        selectVisualization(timeBins[0]);
+        selectVisualization(flights);
     },
     dropHandle:function() {
         d3Graphs.updateViz();

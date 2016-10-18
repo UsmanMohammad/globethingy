@@ -1,33 +1,24 @@
-function buildDataVizGeometries(linearData) {
+function buildDataVizGeometries(flights) {
 
 	var loadLayer = document.getElementById('loading');
 
-	for (var i in linearData) {
-		var yearBin = linearData[i].data;
+	for (var i in flights) {
+		var set = flights[i]
 
-		var year = linearData[i].t;
-		selectableYears.push(year);
+		var departureCode = set.departure.toUpperCase();
+		var arrivalCode = set.arrival.toUpperCase();
 
-		var count = 0;
-		console.log('Building data for ...' + year);
-		for (var s in yearBin) {
-			var set = yearBin[s];
+		exporter = airportData[departureCode];
+		importer = airportData[arrivalCode];
+		//	we couldn't find the country, it wasn't in our list...
+		if (exporter === undefined || importer === undefined)
+			continue;
 
-			var departureName = set.departure.toUpperCase();
-			var arrivalName = set.arrival.toUpperCase();
+		//	visualize this event
+		set.lineGeometry = makeConnectionLineGeometry(exporter, importer, 12);
 
-			exporter = airportData[departureName];
-			importer = airportData[arrivalName];
-			//	we couldn't find the country, it wasn't in our list...
-			if (exporter === undefined || importer === undefined)
-				continue;
-
-			//	visualize this event
-			set.lineGeometry = makeConnectionLineGeometry(exporter, importer, set.v, set.wc);
-
-			// if( s % 1000 == 0 )
-			// 	console.log( 'calculating ' + s + ' of ' + yearBin.length + ' in year ' + year);
-		}
+		// if( s % 1000 == 0 )
+		// 	console.log( 'calculating ' + s + ' of ' + yearBin.length + ' in year ' + year);
 
 		//	use this break to only visualize one year (1992)
 		// break;
@@ -40,7 +31,7 @@ function buildDataVizGeometries(linearData) {
 	loadLayer.style.display = 'none';
 }
 
-function getVisualizedMesh(bin, currentTrip) {
+function getVisualizedMesh(bin, currentTrip, journeyIndex) {
 	//	for comparison purposes, all caps the country names
 
 	// for (var i in countries) {
@@ -97,8 +88,7 @@ function getVisualizedMesh(bin, currentTrip) {
 
 		var particleColor = lastColor.clone();
 		var points = set.lineGeometry.vertices;
-		var particleCount = Math.floor(set.v / 8000 / set.lineGeometry.vertices.length) + 1;
-		particleCount = constrain(particleCount, 1, 100);
+		var particleCount = ((thisLineIsExport) ? 1 : 0);
 		var particleSize = set.lineGeometry.size;
 		for (var s = 0; s < particleCount; s++) {
 			// var rIndex = Math.floor( Math.random() * points.length );
@@ -293,7 +283,7 @@ function selectVisualization(linearData, currentTrip, journeyIndex) {
 	previouslySelectedAirport = selectedAirport;
 	selectedAirport = airportData[currentTrip];
 	selectedCountry = countryData[selectedAirport.country.toUpperCase()];
-	
+
 
 	selectedCountry.summary = {
 		imported: {
@@ -336,7 +326,7 @@ function selectVisualization(linearData, currentTrip, journeyIndex) {
 
 	//	build the mesh
 	console.time('getVisualizedMesh');
-	var mesh = getVisualizedMesh(timeBins[0].data, currentTrip );
+	var mesh = getVisualizedMesh(flights, currentTrip, journeyIndex);
 	console.timeEnd('getVisualizedMesh');
 
 	//	add it to scene graph
@@ -351,7 +341,7 @@ function selectVisualization(linearData, currentTrip, journeyIndex) {
 	}
 
 
-	markerHelper(mesh.affectedCountries, currentTrip, journeyIndex );
+	markerHelper(mesh.affectedCountries, currentTrip, journeyIndex);
 
 
 	// console.log( mesh.affectedCountries );
@@ -360,8 +350,8 @@ function selectVisualization(linearData, currentTrip, journeyIndex) {
 	//TODO: USE ROTATION FORMULA TO CREATE FLIGHT PATH
 	// if (previouslySelectedCountry !== selectedCountry) {
 	if (selectedCountry) {
-		rotateTargetX = selectedCountry.lat * Math.PI / 180;
-		var targetY0 = -(selectedCountry.lon - 9) * Math.PI / 180;
+		rotateTargetX = selectedAirport.lat * Math.PI / 180;
+		var targetY0 = -(selectedAirport.lon - 9) * Math.PI / 180;
 		var piCounter = 0;
 		while (true) {
 			var targetY0Neg = targetY0 - Math.PI * 2 * piCounter;
